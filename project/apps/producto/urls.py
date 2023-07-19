@@ -29,4 +29,19 @@ urlpatterns = [
     #          name="productocategoria_delete"),
     path("productocategoria/delete/<int:pk>", views.ProductoCategoriaDelete.as_view(),
          name="productocategoria_delete"),
+
+
+]
+
+# Producto
+urlpatterns += [
+    path("producto/list/", views.ProductoList.as_view(), name="producto_list"),
+    path("producto/detail/<int:pk>",
+         views.ProductoDetail.as_view(), name="producto_detail"),
+    path("producto/create/", views.ProductoCreate.as_view(), name="producto_create"),
+    path("producto/delete/<int:pk>",
+         views.ProductoDelete.as_view(), name="producto_delete"),
+    path("producto/update/<int:pk>",
+         views.ProductoUpdate.as_view(), name="producto_update"),
+
 ]

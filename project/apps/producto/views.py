@@ -55,6 +55,7 @@ class ProductoCategoriaCreate(CreateView):
 #     query = models.ProductoCategoria.objects.get(id=pk)
 #     return render(request, "producto/productocategoria_detail.html", {"object": query})
 
+
 class ProductoCategoriaDetail(DetailView):
     model = models.ProductoCategoria
 
@@ -87,3 +88,28 @@ class ProductoCategoriaUpdate(UpdateView):
 class ProductoCategoriaDelete(DeleteView):
     model = models.ProductoCategoria
     success_url = reverse_lazy("producto:productocategoria_list")
+
+
+class ProductoCreate(CreateView):
+    model = models.Producto
+    form_class = forms.ProductoForm
+    success_url = reverse_lazy("producto:producto_list")
+
+
+class ProductoList(ListView):
+    model = models.Producto
+
+
+class ProductoDetail(DetailView):
+    model = models.Producto
+
+
+class ProductoDelete(DeleteView):
+    model = models.Producto
+    success_url = reverse_lazy("producto:producto_list")
+
+
+class ProductoUpdate(UpdateView):
+    model = models.Producto
+    form_class = forms.ProductoForm
+    success_url = reverse_lazy("producto:producto_list")
