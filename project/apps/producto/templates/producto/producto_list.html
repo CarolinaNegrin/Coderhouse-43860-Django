@@ -5,14 +5,21 @@
 {% endblock INDEX_TITULO %}
 
 {% block INDEX_CONTENIDO %}
+
+
     {% if object_list %}
+        <div>
+            <form action="{% url 'producto:producto_list' %}" method="get">
+                <input type="text" name="consulta" placeholder="Buscar...">
+            </form>
+        </div>
 
         {% for object in object_list %}
             <ul>
                 <li>{{ object.nombre }} ${{ object.precio}}
-                    <a href="{% url 'producto:producto_detail' object.id %}">Ver detalle</a>
-                    <a href="{% url 'producto:producto_update' object.id %}">Actualizar</a>
-                    <a href="{% url 'producto:producto_delete' object.id %}">Eliminar</a>
+                    <a href="{% url 'producto:producto_detail' object.id %}" class="btn btn-secondary  btn-sn">Ver detalle</a>
+                    <a href="{% url 'producto:producto_update' object.id %}" class="btn btn-secondary  btn-sn">Actualizar</a>
+                    <a href="{% url 'producto:producto_delete' object.id %}" class="btn btn-secondary  btn-sn">Eliminar</a>
                 </li>
             </ul>
         {% endfor %}        

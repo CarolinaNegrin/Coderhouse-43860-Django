@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 
 #! importaciones para login
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import query
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
@@ -98,6 +99,15 @@ class ProductoCreate(CreateView):
 
 class ProductoList(ListView):
     model = models.Producto
+
+    def get_queryset(self):
+        if self.request.GET.get("consulta"):
+            consulta = self.request.GET.get("consulta")
+            object_list = models.Producto.objects.filter(
+                nombre__icontains=consulta)
+        else:
+            object_list = models.Producto.objects.all()
+        return object_list
 
 
 class ProductoDetail(DetailView):
