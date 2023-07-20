@@ -16,5 +16,5 @@
         <li>Fecha de actualización: {{ object.fecha_actualizacion }}</li>
     </ul>
 
-    <a href="{% url 'Home:home' %}">Ir al menú principal</a>
+    {% include 'Home/index_base.html' %}
 {% endblock INDEX_CONTENIDO %}
